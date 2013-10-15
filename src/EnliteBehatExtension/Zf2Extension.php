@@ -51,7 +51,7 @@ class Zf2Extension extends Extension
                 defaultNull()->
             end()->
             scalarNode('config')->
-                defaultNull()->
+                defaultValue('config/application.config.php')->
             end()->
             scalarNode('environment')->
                 defaultNull()->

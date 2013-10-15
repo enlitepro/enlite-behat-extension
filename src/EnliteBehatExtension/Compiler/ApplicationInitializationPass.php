@@ -22,8 +22,12 @@ class ApplicationInitializationPass implements CompilerPassInterface
         $configPath = $container->getParameter("behat.zf2_extension.config");
         $configPath = $applicationPath . DIRECTORY_SEPARATOR . $configPath;
 
+        if (!file_exists($configPath) || !is_file($configPath) || !is_readable($configPath)) {
+            return;
+        }
+
         if (false === ($config = @include $configPath)) {
-            throw new RuntimeException('Cannot load config (' . $configPath . ')');
+            return;
         }
 
         $container->setParameter("behat.zf2_extension.config_data", $config);
