@@ -8,7 +8,7 @@ namespace EnliteBehatExtension\Context;
 
 use Zend\Mvc\Application;
 
-interface ApplicationAwareInitializerInterface
+interface ApplicationAwareInterface
 {
 
     public function setApplication(Application $application);

@@ -8,7 +8,7 @@ namespace EnliteBehatExtension\Context\Initializer;
 
 use Behat\Behat\Context\ContextInterface;
 use Behat\Behat\Context\Initializer\InitializerInterface;
-use EnliteBehatExtension\Context\ApplicationAwareInitializerInterface;
+use EnliteBehatExtension\Context\ApplicationAwareInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Zend\Mvc\Application;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
@@ -34,7 +34,7 @@ class ApplicationAwareInitializer implements InitializerInterface, EventSubscrib
      */
     public function supports(ContextInterface $context)
     {
-        if ($context instanceof ApplicationAwareInitializerInterface) {
+        if ($context instanceof ApplicationAwareInterface) {
             return true;
         }
 
@@ -50,7 +50,7 @@ class ApplicationAwareInitializer implements InitializerInterface, EventSubscrib
      */
     public function initialize(ContextInterface $context)
     {
-        if ($context instanceof ApplicationAwareInitializerInterface) {
+        if ($context instanceof ApplicationAwareInterface) {
             $context->setApplication($this->application);
         }
 

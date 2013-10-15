@@ -8,7 +8,7 @@ namespace Application\Features\Context;
 
 use Behat\Behat\Context\BehatContext;
 use Behat\Behat\Exception\PendingException;
-use EnliteBehatExtension\Context\ApplicationAwareInitializerInterface;
+use EnliteBehatExtension\Context\ApplicationAwareInterface;
 use EnliteBehatExtension\Context\ApplicationAwareTrait;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorAwareTrait;
@@ -17,7 +17,7 @@ require_once 'PHPUnit/Autoload.php';
 require_once 'PHPUnit/Framework/Assert/Functions.php';
 
 class FeatureContext extends BehatContext implements
-    ApplicationAwareInitializerInterface,
+    ApplicationAwareInterface,
     ServiceLocatorAwareInterface
 {
     use ApplicationAwareTrait,

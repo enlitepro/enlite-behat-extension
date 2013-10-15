@@ -75,7 +75,7 @@ class LocatorProcessor extends BehatProcessor
 
                 $path = realpath(preg_replace('/\.feature\:.*$/', '.feature', $featuresPath));
 
-                foreach ($manager->getModules() as $moduleName) {
+                foreach ($manager->getModules() as $moduleName => $module) {
                     if (false !== strpos($path, realpath($manager->getModulePath($moduleName)))) {
                         $modulePath = $moduleName;
                         break;
