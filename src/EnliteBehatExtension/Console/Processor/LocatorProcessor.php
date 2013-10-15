@@ -62,7 +62,8 @@ class LocatorProcessor extends BehatProcessor
         // get bundle from short notation if path starts from @
         if ($featuresPath) {
             if (preg_match('/^\@([^\/\\\\]+)(.*)$/', $featuresPath, $matches)) {
-                $modulePath = $manager->getModulePath($matches[1]);
+                $moduleName = $matches[1];
+                $modulePath = $manager->getModulePath($moduleName);
 
                 $featuresPath = str_replace(
                     '@' . $moduleName,

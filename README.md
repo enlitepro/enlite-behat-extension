@@ -1,4 +1,4 @@
-ZF2 Behat extension
+ZF2 Behat extension [![Build Status](https://travis-ci.org/enlitepro/enlite-behat-extension.png)](https://travis-ci.org/enlitepro/enlite-behat-extension)
 ===================
 
 Provides integration layer for Zend Framework 2:

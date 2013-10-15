@@ -7,7 +7,7 @@
         <parameter key="behat.extensions.enlitebehatextension_zf2extension.config"/>
 
         <parameter key="behat.zf2_extension.module"/>
-        <parameter key="behat.zf2_extension.config"/>
+        <parameter key="behat.zf2_extension.config">config/application.config.php</parameter>
         <parameter key="behat.zf2_extension.config_data"/>
 
         <parameter key="behat.zf2_extension.application.class">Zend\Mvc\Application</parameter>

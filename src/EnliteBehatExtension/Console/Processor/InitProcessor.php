@@ -69,7 +69,8 @@ class InitProcessor extends BehatProcessor
         if ($featuresPath) {
             // get bundle from short notation if path starts from @
             if (preg_match('/^\@([^\/\\\\]+)(.*)$/', $featuresPath, $matches)) {
-                $modulePath = $manager->getModulePath($matches[1]);
+                $moduleName = $matches[1];
+                $modulePath = $manager->getModulePath($moduleName);
                 // get bundle from provided features path
             } elseif (file_exists($featuresPath)) {
                 $featuresPath = realpath($featuresPath);
