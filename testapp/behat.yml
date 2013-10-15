@@ -1,0 +1,11 @@
+default:
+  extensions:
+    EnliteBehatExtension\Zf2Extension:
+      module: Application
+      config: config/application.config.php
+
+simple:
+  filters:
+    tags: "@simple"
+  
+    

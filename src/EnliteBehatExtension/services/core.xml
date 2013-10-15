@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="behat.extensions.enlitebehatextension_zf2extension.module"/>
+        <parameter key="behat.extensions.enlitebehatextension_zf2extension.config"/>
+
+        <parameter key="behat.zf2_extension.module"/>
+        <parameter key="behat.zf2_extension.config"/>
+        <parameter key="behat.zf2_extension.config_data"/>
+
+        <parameter key="behat.zf2_extension.application.class">Zend\Mvc\Application</parameter>
+        <parameter key="behat.zf2_extension.modulemanager.class">EnliteBehatExtension\ModuleManager</parameter>
+
+        <parameter key="behat.zf2_extension.context.path_suffix">Features</parameter>
+        <parameter key="behat.zf2_extension.context.class_suffix">Features\Context\FeatureContext</parameter>
+        <parameter key="behat.zf2_extension.context.class_guesser.class">EnliteBehatExtension\Context\ClassGuesser\ModuleContextClassGuesser</parameter>
+
+        <parameter key="behat.zf2_extension.context.initializer.class">EnliteBehatExtension\Context\Initializer\ApplicationAwareInitializer</parameter>
+        <parameter key="behat.console.processor.locator.class">EnliteBehatExtension\Console\Processor\LocatorProcessor</parameter>
+        <parameter key="behat.console.processor.init.class">EnliteBehatExtension\Console\Processor\InitProcessor</parameter>
+
+    </parameters>
+    <services>
+
+        <service id="behat.zf2_extension.application" class="%behat.zf2_extension.application.class%" factory-class="%behat.zf2_extension.application.class%" factory-method="init">
+            <argument>%behat.zf2_extension.config_data%</argument>
+        </service>
+
+        <service id="behat.zf2_extension.modulemanager" class="%behat.zf2_extension.modulemanager.class%">
+            <argument type="service" id="behat.zf2_extension.application"/>
+        </service>
+
+        <service id="behat.zf2_extension.context.initializer" class="%behat.zf2_extension.context.initializer.class%">
+            <argument type="service" id="behat.zf2_extension.application" />
+            <tag name="behat.context.initializer" />
+            <tag name="behat.event_subscriber" />
+        </service>
+
+        <service id="behat.zf2_extension.context.class_guesser" class="%behat.zf2_extension.context.class_guesser.class%">
+            <argument>%behat.zf2_extension.context.class_suffix%</argument>
+            <tag name="behat.context.class_guesser" priority="5" />
+        </service>
+
+    </services>
+</container>
