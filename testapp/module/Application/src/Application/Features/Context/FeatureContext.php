@@ -10,8 +10,10 @@ use Behat\Behat\Context\BehatContext;
 use Behat\Behat\Exception\PendingException;
 use EnliteBehatExtension\Context\ApplicationAwareInterface;
 use EnliteBehatExtension\Context\ApplicationAwareTrait;
+use Zend\Mvc\Application;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorAwareTrait;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 require_once 'PHPUnit/Autoload.php';
 require_once 'PHPUnit/Framework/Assert/Functions.php';
@@ -20,8 +22,20 @@ class FeatureContext extends BehatContext implements
     ApplicationAwareInterface,
     ServiceLocatorAwareInterface
 {
-    use ApplicationAwareTrait,
-        ServiceLocatorAwareTrait;
+
+    /**
+     * @var Application
+     */
+    private $application;
+
+    /**
+     * @var ServiceLocatorInterface
+     */
+    private $serviceLocator;
+
+//    For PHP >=5.4
+//    use ApplicationAwareTrait,
+//        ServiceLocatorAwareTrait;
 
     /**
      * @var array
@@ -72,6 +86,38 @@ class FeatureContext extends BehatContext implements
     public function thereShouldNotBeParameter($key)
     {
         assertArrayNotHasKey($key, $this->config);
+    }
+
+    /**
+     * @param Application $application
+     */
+    public function setApplication(Application $application)
+    {
+        $this->application = $application;
+    }
+
+    /**
+     * @return Application
+     */
+    public function getApplication()
+    {
+        return $this->application;
+    }
+
+    /**
+     * @param ServiceLocatorInterface $serviceLocator
+     */
+    public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
+    {
+        $this->serviceLocator = $serviceLocator;
+    }
+
+    /**
+     * @return ServiceLocatorInterface
+     */
+    public function getServiceLocator()
+    {
+        return $this->serviceLocator;
     }
 
 }
