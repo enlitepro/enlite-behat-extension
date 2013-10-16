@@ -40,8 +40,8 @@ class LocatorProcessor extends BehatProcessor
             "Feature(s) to run. Could be:" .
             "\n- a dir (<comment>src/to/Module/Features/</comment>), " .
             "\n- a feature (<comment>src/to/Module/Features/*.feature</comment>), " .
-            "\n- a scenario at specific line (<comment>src/to/Bundle/Module/*.feature:10</comment>). " .
-            "\n- Also, you can use short bundle notation (<comment>@Module/*.feature:10</comment>)"
+            "\n- a scenario at specific line (<comment>src/to/Module/Features/*.feature:10</comment>). " .
+            "\n- Also, you can use short module notation (<comment>@Module/*.feature:10</comment>)"
         );
     }
 

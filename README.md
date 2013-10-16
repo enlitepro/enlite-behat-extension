@@ -17,8 +17,10 @@ Installation
 Add yo your `composer.json`
 
 ```json
-"required": {
-    "enlitepro/enlite-behat-extension": "1.0.*"
+{
+    "require": {
+        "enlitepro/enlite-behat-extension": "1.0.*"
+    }
 }
 ```
 
@@ -27,10 +29,30 @@ and add in your `behat.yml`
 ```yaml
 default:
   extensions:
-    EnliteBehatExtension\Zf2Extension:
-      module: Application
-      config: config/application.config.php
+    EnliteBehatExtension\Zf2Extension: ~
+      # module: moduleName
+      # config: path_to_application.config.php
+      # environment: testing
 ```
+
+Usage
+=====
+
+```bash
+# create directory structure and context file in module Application
+behat --init "@Application"
+
+# You can use short module notation to run features
+behat "@Application"
+```
+
+There are two interface, which you can implement for your context
+
+1. `EnliteBehatExtension\Context\ApplicationAwareInterface` - inject `Zend\Mvc\Application`. Your can use trait
+   `EnliteBehatExtension\Context\ApplicationAwareTrait` to implement required methods
+
+2. `Zend\ServiceManager\ServiceLocatorAwareInterface` - inject service manager.
+
 
 Credits
 =======
